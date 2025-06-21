@@ -4,119 +4,397 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+  <meta name="description" content="Rodrigo Blanco - Web Systems Developer" />
+  <meta name="author" content="Rodrigo Blanco" />
 
   <title>Rodrigo B Personal Page</title>
 
-  <!-- CSS -->
-  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-  <link href="assets/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-  <!-- <link
-      href="assets/css/simple-line-icons.css"
-      rel="stylesheet"
-      media="screen"
-    /> -->
-  <script src="https://use.fontawesome.com/84175a2fdc.js"></script>
-  <link href="assets/css/animate.css" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            'fade-in-up': 'fadeInUp 1s ease-out',
+            'slide-in-left': 'slideInLeft 1s ease-out',
+            'slide-in-right': 'slideInRight 1s ease-out',
+            'zoom-in': 'zoomIn 1s ease-out',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideInLeft: {
+              '0%': { opacity: '0', transform: 'translateX(-20px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            slideInRight: {
+              '0%': { opacity: '0', transform: 'translateX(20px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            zoomIn: {
+              '0%': { opacity: '0', transform: 'scale(0.5)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-  <!-- Custom styles CSS -->
-  <link href="assets/css/style.css" rel="stylesheet" media="screen" />
+  <style>
+    /* Custom styles */
+    .home-bg {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/images/mua3.jpg') no-repeat center center;
+      background-size: cover;
+    }
 
-  <script src="assets/js/modernizr.custom.js"></script>
+    .navbar-custom {
+      background-color: transparent;
+      border-color: transparent;
+      transition: all 0.3s;
+    }
+
+    .navbar-custom.scrolled {
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-custom.scrolled .navbar-brand,
+    .navbar-custom.scrolled .nav li a {
+      color: #333;
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav li a {
+      color: #fff;
+    }
+
+    .navbar-custom .nav li a:hover,
+    .navbar-custom .nav li a:focus {
+      color: #1abc9c;
+      background-color: transparent;
+    }
+
+    .pfblock {
+      padding: 100px 0;
+    }
+
+    .pfblock-gray {
+      background-color: #f9f9f9;
+    }
+
+    .pfblock-image {
+      background-color: transparent;
+      position: relative;
+    }
+
+    .home-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .intro {
+      color: #fff;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .intro img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 30px;
+      border: 5px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .intro h1 {
+      font-size: 60px;
+      font-weight: 700;
+      margin: 20px 0;
+      color: #fff;
+    }
+
+    .start {
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 30px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0) translateX(-50%);
+      }
+
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+
+    .pfblock-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .pfblock-title {
+      font-size: 35px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .pfblock-line {
+      width: 100px;
+      height: 2px;
+      background-color: #1abc9c;
+      margin: 0 auto 20px;
+    }
+
+    .pfblock-subtitle {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #777;
+    }
+
+    .iconbox {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .iconbox-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background-color: #1abc9c;
+      color: #fff;
+      font-size: 40px;
+      line-height: 100px;
+    }
+
+    .iconbox-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .iconbox-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #777;
+    }
+
+    .chart {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 30px;
+      text-align: center;
+      line-height: 140px;
+      font-size: 30px;
+      font-weight: 700;
+      color: #1abc9c;
+    }
+
+    .chart canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #contact-form .form-control {
+      height: 50px;
+      border: 1px solid #eee;
+      border-radius: 0;
+      box-shadow: none;
+      margin-bottom: 20px;
+    }
+
+    #contact-form textarea.form-control {
+      height: auto;
+      resize: none;
+    }
+
+    .btn {
+      border-radius: 0;
+      padding: 12px 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+    }
+
+    .btn-lg {
+      padding: 15px 30px;
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #fff;
+      z-index: 9999;
+    }
+
+    #status {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: -20px 0 0 -20px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #1abc9c;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .intro h1 {
+        font-size: 40px;
+      }
+
+      .start {
+        font-size: 18px;
+      }
+
+      .pfblock {
+        padding: 60px 0;
+      }
+    }
+  </style>
 </head>
 
-<body>
+<body class="font-sans leading-relaxed">
   <!-- Preloader -->
-
   <div id="preloader">
     <div id="status"></div>
   </div>
 
   <!-- Home start -->
-
-  <section id="home" class="pfblock-image screen-height">
-    <div class="home-overlay"></div>
-    <div class="intro">
-      <img src='assets/images/mua3.jpg' style='border-radius: 50%;'></img>
+  <section id="home" class="pfblock-image screen-height home-bg min-h-screen flex items-center justify-center relative">
+    <div class="home-overlay absolute inset-0"></div>
+    <div class="intro text-center z-10 px-4">
+      <img src='assets/images/mua3.jpg' alt="Rodrigo Blanco" class="mx-auto">
       <div class="start">Hello, my name is Rodrigo Blanco and I am</div>
-      <h1>Web Systems Developer</h1>
+      <h1 class="text-white font-bold">Web Systems Developer</h1>
       <div class="start">crafting high-quality software</div>
     </div>
 
-    <a href="#philosophy">
+    <a href="#philosophy" class="scroll-down">
       <div class="scroll-down">
         <span>
-          <i class="fa fa-angle-down fa-2x"></i>
+          <i class="fas fa-angle-down fa-2x"></i>
         </span>
       </div>
     </a>
   </section>
-
   <!-- Home end -->
 
   <!-- Navigation start -->
+  <header class="header fixed top-0 left-0 right-0 z-50">
+    <nav class="navbar-custom py-4 transition-all duration-300">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+          <div class="navbar-header">
+            <button class="navbar-toggle md:hidden text-white focus:outline-none" type="button" data-toggle="collapse"
+              data-target="#custom-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar block w-6 h-1 bg-white mb-1"></span>
+              <span class="icon-bar block w-6 h-1 bg-white mb-1"></span>
+              <span class="icon-bar block w-6 h-1 bg-white"></span>
+            </button>
+            <a class="navbar-brand text-white text-xl font-bold" href="index.html">Rodrigo Blanco</a>
+          </div>
 
-  <header class="header">
-    <nav class="navbar navbar-custom" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">Rodrigo Blanco</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="custom-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#philosophy">Philosophy</a></li>
-            <li><a href="#services">Services</a></li>
-            <!-- <li><a href="#portfolio">Works</a></li> -->
-            <li><a href="#skills">Skills</a></li>
-            <!-- <li><a href="#testimonials">Testimonials</a></li> -->
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          <div class="hidden md:block" id="custom-collapse">
+            <ul class="flex space-x-8">
+              <li><a href="#home" class="text-white hover:text-teal-400 transition">Home</a></li>
+              <li><a href="#philosophy" class="text-white hover:text-teal-400 transition">Philosophy</a></li>
+              <li><a href="#services" class="text-white hover:text-teal-400 transition">Services</a></li>
+              <li><a href="#skills" class="text-white hover:text-teal-400 transition">Skills</a></li>
+              <li><a href="#contact" class="text-white hover:text-teal-400 transition">Contact</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-      <!-- .container -->
     </nav>
   </header>
-
   <!-- Navigation end -->
 
-
-  <section id="philosophy" class="pfblock pfblock-gray">
-    <div class="container">
+  <!-- Philosophy section -->
+  <section id="philosophy" class="pfblock pfblock-gray py-20">
+    <div class="container mx-auto px-4">
       <div class="row border">
-        <div class="col-sm-6 col-sm-offset-3">
-          <div class="pfblock-header wow fadeInUp">
+        <div class="col-sm-6 col-sm-offset-3 mx-auto text-center">
+          <div class="pfblock-header animate__animated animate__fadeInUp">
             <h2 class="pfblock-title">Philosophy</h2>
-            <div class="pfblock-line"></div>
-            <div class="pfblock-subtitle">
+            <div class="pfblock-line mx-auto"></div>
+            <div class="pfblock-subtitle italic">
               "Don't get set into one form, adapt it and build your own, and let it grow, be like water. Empty your
               mind, be formless, shapeless — like water. Now you put water in a cup, it becomes the cup; You put water
               into a bottle it becomes the bottle; You put it in a teapot it becomes the teapot. Now water can flow or
               it can crash. Be water, my friend"
             </div>
-            <div class="pfblock-subtitle" style="text-align: end !important;"> - Bruce Lee - </div>
+            <div class="pfblock-subtitle text-right mt-4"> - Bruce Lee - </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
   <!-- Services start -->
-  <section id="services" class="pfblock pfblock">
-    <div class="container">
+  <section id="services" class="pfblock py-20">
+    <div class="container mx-auto px-4">
       <div class="row">
-        <div class="col-sm-12">
-          <div class="pfblock-header wow fadeInUp">
+        <div class="col-sm-12 mx-auto">
+          <div class="pfblock-header animate__animated animate__fadeInUp text-center">
             <h2 class="pfblock-title">This is what I do</h2>
-            <div class="pfblock-line"></div>
-            <div class="pfblock-subtitle" style="text-align: justify !important;">
+            <div class="pfblock-line mx-auto"></div>
+            <div class="pfblock-subtitle text-justify max-w-3xl mx-auto">
               In the last 10 years I had the opportunity to work on different projects, with different colleagues, for
               different companies. Developing the ability to adapt to the role that was needed in the software
               development process to carry it out successfully. Learning, growing and contributing whit my soft and hard
@@ -126,307 +404,114 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="iconbox wow slideInLeft">
-            <div class="iconbox-icon">
-              <span><i class="fa fa-sitemap"></i></span>
-            </div>
-            <div class="iconbox-text">
-              <h3 class="iconbox-title">Analysis & Planning</h3>
-              <div class="iconbox-desc">
-                Identify stakeholders, drivers, constraints and make an action plan, it is essential to succeed.
-              </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+        <div class="iconbox animate__animated animate__slideInLeft">
+          <div class="iconbox-icon">
+            <span><i class="fas fa-sitemap"></i></span>
+          </div>
+          <div class="iconbox-text">
+            <h3 class="iconbox-title">Analysis & Planning</h3>
+            <div class="iconbox-desc">
+              Identify stakeholders, drivers, constraints and make an action plan, it is essential to succeed.
             </div>
           </div>
         </div>
 
-        <div class="col-sm-3">
-          <div class="iconbox wow slideInLeft">
-            <div class="iconbox-icon">
-              <span><i class="fa fa-code"></i></span>
-            </div>
-            <div class="iconbox-text">
-              <h3 class="iconbox-title">Design and Programming</h3>
-              <div class="iconbox-desc">
-                Make wireframes, prototypes and ERD, and then start coding with best practices!
-              </div>
+        <div class="iconbox animate__animated animate__slideInLeft">
+          <div class="iconbox-icon">
+            <span><i class="fas fa-code"></i></span>
+          </div>
+          <div class="iconbox-text">
+            <h3 class="iconbox-title">Design and Programming</h3>
+            <div class="iconbox-desc">
+              Make wireframes, prototypes and ERD, and then start coding with best practices!
             </div>
           </div>
         </div>
 
-        <div class="col-sm-3">
-          <div class="iconbox wow slideInRight">
-            <div class="iconbox-icon">
-              <span><i class="fa fa-filter"></i></span>
-            </div>
-            <div class="iconbox-text">
-              <h3 class="iconbox-title">Test & Quality</h3>
-              <div class="iconbox-desc">
-                Do Unit Test, Integration Test and End to End, to make sure everything works fine.
-              </div>
+        <div class="iconbox animate__animated animate__slideInRight">
+          <div class="iconbox-icon">
+            <span><i class="fas fa-filter"></i></span>
+          </div>
+          <div class="iconbox-text">
+            <h3 class="iconbox-title">Test & Quality</h3>
+            <div class="iconbox-desc">
+              Do Unit Test, Integration Test and End to End, to make sure everything works fine.
             </div>
           </div>
         </div>
 
-        <div class="col-sm-3">
-          <div class="iconbox wow slideInRight">
-            <div class="iconbox-icon">
-              <span><i class="fa fa-cogs"></i></span>
-            </div>
-            <div class="iconbox-text">
-              <h3 class="iconbox-title">Implementation & maintain</h3>
-              <div class="iconbox-desc">
-                Deploy the project in production and then refactor or implement upgrades.
-              </div>
+        <div class="iconbox animate__animated animate__slideInRight">
+          <div class="iconbox-icon">
+            <span><i class="fas fa-cogs"></i></span>
+          </div>
+          <div class="iconbox-text">
+            <h3 class="iconbox-title">Implementation & maintain</h3>
+            <div class="iconbox-desc">
+              Deploy the project in production and then refactor or implement upgrades.
             </div>
           </div>
         </div>
       </div>
-      <!-- .row -->
     </div>
-    <!-- .container -->
   </section>
-
   <!-- Services end -->
 
-  <!-- Portfolio start -->
-
-  <!-- <section id="portfolio" class="pfblock">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-sm-offset-3">
-            <div class="pfblock-header wow fadeInUp">
-              <h2 class="pfblock-title">My works</h2>
-              <div class="pfblock-line"></div>
-              <div class="pfblock-subtitle">
-                No one lights a lamp in order to hide it behind the door: the
-                purpose of light is to create more light, to open people’s eyes,
-                to reveal the marvels around.
-              </div>
-            </div>
-          </div>
-        </div> -->
-  <!-- .row -->
-
-  <!-- <div class="row">
-          <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="grid wow zoomIn">
-              <figure class="effect-bubba">
-                <img src="assets/images/item-1.jpg" alt="img01" />
-                <figcaption>
-                  <h2>Crazy <span>Shark</span></h2>
-                  <p>Lily likes to play with crayons and pencils</p>
-                </figcaption>
-              </figure>
-            </div>
-          </div> -->
-
-  <!-- <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="grid wow zoomIn">
-              <figure class="effect-bubba">
-                <img src="assets/images/item-2.jpg" alt="img01" />
-                <figcaption>
-                  <h2>Funny <span>Tortoise</span></h2>
-                  <p>Lily likes to play with crayons and pencils</p>
-                </figcaption>
-              </figure>
-            </div>
-          </div> -->
-
-  <!-- <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="grid wow zoomIn">
-              <figure class="effect-bubba">
-                <img src="assets/images/item-3.jpg" alt="img01" />
-                <figcaption>
-                  <h2>The <span>Hat</span></h2>
-                  <p>Lily likes to play with crayons and pencils</p>
-                </figcaption>
-              </figure>
-            </div>
-          </div> -->
-
-  <!-- <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="grid wow zoomIn">
-              <figure class="effect-bubba">
-                <img src="assets/images/item-4.jpg" alt="img01" />
-                <figcaption>
-                  <h2>Bang <span>Bang</span></h2>
-                  <p>Lily likes to play with crayons and pencils</p>
-                </figcaption>
-              </figure>
-            </div>
-          </div> -->
-
-  <!-- <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="grid wow zoomIn">
-              <figure class="effect-bubba">
-                <img src="assets/images/item-5.jpg" alt="img01" />
-                <figcaption>
-                  <h2>Crypton <span>Dude</span></h2>
-                  <p>Lily likes to play with crayons and pencils</p>
-                </figcaption>
-              </figure>
-            </div>
-          </div> -->
-
-  <!-- <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="grid wow zoomIn">
-              <figure class="effect-bubba">
-                <img src="assets/images/item-6.jpg" alt="img01" />
-                <figcaption>
-                  <h2>Don't <span>Poke</span></h2>
-                  <p>Lily likes to play with crayons and pencils</p>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div> -->
-  <!-- .contaier -->
-  <!-- </section> -->
-
-  <!-- Portfolio end -->
-
   <!-- Skills start -->
-
-  <section class="pfblock pfblock-gray" id="skills">
-    <div class="container">
+  <section class="pfblock pfblock-gray py-20" id="skills">
+    <div class="container mx-auto px-4">
       <div class="row skills">
         <div class="row">
-          <div class="col-sm-6 col-sm-offset-3">
-            <div class="pfblock-header wow fadeInUp">
+          <div class="col-sm-6 col-sm-offset-3 mx-auto text-center">
+            <div class="pfblock-header animate__animated animate__fadeInUp">
               <h2 class="pfblock-title">My Skills</h2>
-              <div class="pfblock-line"></div>
+              <div class="pfblock-line mx-auto"></div>
               <div class="pfblock-subtitle">
                 Service skills are the foundation for your success.
               </div>
             </div>
           </div>
         </div>
-        <!-- .row -->
 
-        <div class="col-sm-6 col-md-3 text-center">
-          <span data-percent="80" class="chart easyPieChart" style="width: 140px; height: 140px; line-height: 140px;">
-            <span class="percent">80</span>
-          </span>
-          <h3 class="text-center">Php</h3>
-        </div>
-        <div class="col-sm-6 col-md-3 text-center">
-          <span data-percent="90" class="chart easyPieChart" style="width: 140px; height: 140px; line-height: 140px;">
-            <span class="percent">90</span>
-          </span>
-          <h3 class="text-center">JS</h3>
-        </div>
-        <div class="col-sm-6 col-md-3 text-center">
-          <span data-percent="85" class="chart easyPieChart" style="width: 140px; height: 140px; line-height: 140px;">
-            <span class="percent">85</span>
-          </span>
-          <h3 class="text-center">SQL</h3>
-        </div>
-        <div class="col-sm-6 col-md-3 text-center">
-          <span data-percent="95" class="chart easyPieChart" style="width: 140px; height: 140px; line-height: 140px;">
-            <span class="percent">95</span>
-          </span>
-          <h3 class="text-center">UI / UX</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="80">
+              <span class="percent">80</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">Php</h3>
+          </div>
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="90">
+              <span class="percent">90</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">JS</h3>
+          </div>
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="85">
+              <span class="percent">85</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">SQL</h3>
+          </div>
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="95">
+              <span class="percent">95</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">UI / UX</h3>
+          </div>
         </div>
       </div>
-      <!--End row -->
     </div>
   </section>
-
   <!-- Skills end -->
 
-  <!-- CallToAction start -->
-
-  <!-- <section class="calltoaction">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-lg-12">
-            <h2 class="wow slideInRight" data-wow-delay=".1s">
-              ARE YOU READY TO START?
-            </h2>
-            <div
-              class="calltoaction-decription wow slideInRight"
-              data-wow-delay=".2s"
-            >
-              I'm available for freelance projects.
-            </div>
-          </div>
-
-          <div
-            class="col-md-12 col-lg-12 calltoaction-btn wow slideInRight"
-            data-wow-delay=".3s"
-          >
-            <a href="#contact" class="btn btn-lg">Hire Me</a>
-          </div>
-        </div> -->
-  <!-- .row -->
-  <!-- </div> -->
-  <!-- .container -->
-  <!-- </section> -->
-
-  <!-- CallToAction end -->
-
-  <!-- Testimonials start -->
-
-  <!-- <section id="testimonials" class="pfblock pfblock-gray">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-sm-offset-3">
-            <div class="pfblock-header wow fadeInUp">
-              <h2 class="pfblock-title">What my clients say</h2>
-              <div class="pfblock-line"></div>
-              <div class="pfblock-subtitle">
-                No one lights a lamp in order to hide it behind the door: the
-                purpose of light is to create more light, to open people’s eyes,
-                to reveal the marvels around.
-              </div>
-            </div>
-          </div>
-        </div> -->
-  <!-- .row -->
-
-  <!-- <div class="row">
-          <div id="cbp-qtrotator" class="cbp-qtrotator">
-            <div class="cbp-qtcontent">
-              <img src="assets/images/client-1.jpg" alt="client-1" />
-              <blockquote>
-                <p>
-                  Work with John was a pleasure. He understood exactly what I
-                  wanted and created an awesome site for my company.
-                </p>
-                <footer>Pino Caruso</footer>
-              </blockquote>
-            </div>
-            <div class="cbp-qtcontent">
-              <img src="assets/images/client-2.jpg" alt="client-2" />
-              <blockquote>
-                <p>
-                  I'm really happy with the results. Get 100% satisfaction is
-                  difficult but Alex got it without problems.
-                </p>
-                <footer>Jane Doe</footer>
-              </blockquote>
-            </div>
-          </div>
-        </div> -->
-  <!-- .row -->
-  <!-- </div> -->
-  <!-- .row -->
-  <!-- </section> -->
-
-  <!-- Testimonial end -->
-
   <!-- Contact start -->
-
-  <section id="contact" class="pfblock">
-    <div class="container">
+  <section id="contact" class="pfblock py-20">
+    <div class="container mx-auto px-4">
       <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-6 col-sm-offset-3 mx-auto text-center">
           <div class="pfblock-header">
             <h2 class="pfblock-title">Contact me in a touch!</h2>
-            <div class="pfblock-line"></div>
+            <div class="pfblock-line mx-auto"></div>
             <div class="pfblock-subtitle">
               If you are interested in contact me for project or advice, please send me a message and I will respond as
               soon as possible. Thanks
@@ -434,78 +519,143 @@
           </div>
         </div>
       </div>
-      <!-- .row -->
 
       <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <form id="contact-form" role="form" action="https://formspree.io/mnqgwryz" method="POST">
+        <div class="col-sm-6 col-sm-offset-3 mx-auto">
+          <form id="contact-form" role="form" action="https://formspree.io/mnqgwryz" method="POST" class="mt-8">
             <div class="ajax-hidden">
-              <div class="form-group wow fadeInUp">
+              <div class="form-group animate__animated animate__fadeInUp">
                 <label class="sr-only" for="c_name">Name</label>
-                <input type="text" id="c_name" class="form-control" name="c_name" placeholder="Name" />
+                <input type="text" id="c_name" class="form-control w-full px-4 py-3 border border-gray-300 rounded"
+                  name="c_name" placeholder="Name" required />
               </div>
 
-              <div class="form-group wow fadeInUp" data-wow-delay=".1s">
+              <div class="form-group animate__animated animate__fadeInUp mt-4" data-wow-delay=".1s">
                 <label class="sr-only" for="c_email">Email</label>
-                <input type="email" id="c_email" class="form-control" name="c_email" placeholder="E-mail" />
+                <input type="email" id="c_email" class="form-control w-full px-4 py-3 border border-gray-300 rounded"
+                  name="c_email" placeholder="E-mail" required />
               </div>
 
-              <div class="form-group wow fadeInUp" data-wow-delay=".2s">
-                <textarea class="form-control" id="c_message" name="c_message" rows="7"
-                  placeholder="Message"></textarea>
+              <div class="form-group animate__animated animate__fadeInUp mt-4" data-wow-delay=".2s">
+                <textarea class="form-control w-full px-4 py-3 border border-gray-300 rounded" id="c_message"
+                  name="c_message" rows="7" placeholder="Message" required></textarea>
               </div>
 
-              <button type="submit" class="btn btn-lg btn-block wow fadeInUp" data-wow-delay=".3s">
+              <button type="submit"
+                class="btn btn-lg btn-block bg-teal-500 hover:bg-teal-600 text-white mt-6 w-full py-3 animate__animated animate__fadeInUp"
+                data-wow-delay=".3s">
                 Send Message
               </button>
             </div>
-            <!-- <div class="ajax-response"></div> -->
           </form>
         </div>
       </div>
-      <!-- .row -->
     </div>
-    <!-- .container -->
   </section>
-
   <!-- Contact end -->
 
   <!-- Footer start -->
-
-  <footer id="footer">
-    <div class="container">
+  <footer id="footer" class="py-8 bg-gray-100">
+    <div class="container mx-auto px-4">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 text-center">
+          <p class="text-gray-600">&copy; 2023 Rodrigo Blanco. All rights reserved.</p>
         </div>
       </div>
-      <!-- .row -->
     </div>
-    <!-- .container -->
   </footer>
-
   <!-- Footer end -->
 
   <!-- Scroll to top -->
-
-  <div class="scroll-up">
-    <a href="#home"><i class="fa fa-angle-up"></i></a>
+  <div
+    class="scroll-up fixed bottom-8 right-8 bg-teal-500 text-white w-12 h-12 rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-300">
+    <a href="#home" class="text-white"><i class="fas fa-angle-up text-xl"></i></a>
   </div>
-
   <!-- Scroll to top end-->
 
   <!-- Javascript files -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
 
-  <script src="assets/js/jquery-1.11.1.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.parallax-1.1.3.js"></script>
-  <script src="assets/js/imagesloaded.pkgd.js"></script>
-  <script src="assets/js/jquery.sticky.js"></script>
-  <script src="assets/js/smoothscroll.js"></script>
-  <script src="assets/js/wow.min.js"></script>
-  <script src="assets/js/jquery.easypiechart.js"></script>
-  <script src="assets/js/waypoints.min.js"></script>
-  <script src="assets/js/jquery.cbpQTRotator.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <script>
+    // Preloader
+    $(window).on('load', function () {
+      $('#status').fadeOut();
+      $('#preloader').delay(350).fadeOut('slow');
+      $('body').delay(350).css({ 'overflow': 'visible' });
+    });
+
+    // Navbar scroll effect
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 100) {
+        $('.navbar-custom').addClass('scrolled');
+        $('.scroll-up').css({ 'opacity': '1', 'visibility': 'visible' });
+      } else {
+        $('.navbar-custom').removeClass('scrolled');
+        $('.scroll-up').css({ 'opacity': '0', 'visibility': 'hidden' });
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    $('a[href*="#"]').on('click', function (e) {
+      e.preventDefault();
+
+      $('html, body').animate(
+        {
+          scrollTop: $($(this).attr('href')).offset().top,
+        },
+        500,
+        'linear'
+      );
+    });
+
+    // Initialize EasyPieChart
+    $(function () {
+      $('.chart').easyPieChart({
+        scaleColor: false,
+        lineWidth: 10,
+        lineCap: 'butt',
+        barColor: '#1abc9c',
+        trackColor: '#f5f5f5',
+        size: 140,
+        animate: 1500
+      });
+    });
+
+    // Mobile menu toggle
+    $('.navbar-toggle').on('click', function () {
+      $('#custom-collapse').toggleClass('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    $('#custom-collapse a').on('click', function () {
+      $('#custom-collapse').addClass('hidden');
+    });
+
+    // Animation on scroll
+    function animateOnScroll() {
+      $('.animate__animated').each(function () {
+        var position = $(this).offset().top;
+        var scroll = $(window).scrollTop();
+        var windowHeight = $(window).height();
+
+        if (scroll + windowHeight > position) {
+          var animation = $(this).attr('class').split('animate__')[1].split(' ')[0];
+          $(this).addClass('animate__' + animation);
+        }
+      });
+    }
+
+    $(window).on('scroll', animateOnScroll);
+    $(document).ready(animateOnScroll);
+  </script>
 </body>
 
 </html>
