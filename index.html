@@ -51,7 +51,7 @@
   <style>
     /* Custom styles */
     .home-bg {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/images/mua3.jpg') no-repeat center center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/images/cover2.jpg') no-repeat center center;
       background-size: cover;
     }
 
@@ -71,6 +71,12 @@
       color: #333;
     }
 
+    .navbar-custom.scrolled .nav li a:hover,
+    .navbar-custom.scrolled .nav li a:focus {
+      color: #1abc9c;
+      background-color: transparent;
+    }
+
     .navbar-custom .navbar-brand,
     .navbar-custom .nav li a {
       color: #fff;
@@ -84,6 +90,9 @@
 
     .pfblock {
       padding: 100px 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
     }
 
     .pfblock-gray {
@@ -291,6 +300,53 @@
       }
     }
 
+    /* Language toggle */
+    .language-toggle {
+      margin-left: 20px;
+    }
+
+    .toggle-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .toggle-btn i {
+      margin-right: 8px;
+    }
+
+    .navbar-custom.scrolled .toggle-btn {
+      background: rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
+    .navbar-custom.scrolled .toggle-btn:hover {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    /* Navigation links color fix */
+    .nav-links a {
+      transition: color 0.3s;
+    }
+
+    .navbar-custom.scrolled .nav-links a {
+      color: #333;
+    }
+
+    .navbar-custom.scrolled .nav-links a:hover {
+      color: #1abc9c;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .intro h1 {
@@ -303,6 +359,15 @@
 
       .pfblock {
         padding: 60px 0;
+      }
+
+      .language-toggle {
+        margin-left: 10px;
+      }
+
+      .toggle-btn {
+        padding: 6px 12px;
+        font-size: 14px;
       }
     }
   </style>
@@ -318,10 +383,12 @@
   <section id="home" class="pfblock-image screen-height home-bg min-h-screen flex items-center justify-center relative">
     <div class="home-overlay absolute inset-0"></div>
     <div class="intro text-center z-10 px-4">
-      <img src='assets/images/mua3.jpg' alt="Rodrigo Blanco" class="mx-auto">
-      <div class="start">Hello, my name is Rodrigo Blanco and I am</div>
+      <img src='assets/images/mua3.jpg' alt="Rodrigo Blanco" class="mx-auto w-40 h-40 object-cover">
+      <div class="start" data-en="Hello, my name is Rodrigo Blanco and I am"
+        data-es="Hola, mi nombre es Rodrigo Blanco y soy">Hello, my name is Rodrigo Blanco and I am</div>
       <h1 class="text-white font-bold">Web Systems Developer</h1>
-      <div class="start">crafting high-quality software</div>
+      <div class="start" data-en="crafting high-quality software" data-es="creando software de alta calidad">crafting
+        high-quality software</div>
     </div>
 
     <a href="#philosophy" class="scroll-down">
@@ -339,9 +406,8 @@
     <nav class="navbar-custom py-4 transition-all duration-300">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center">
-          <div class="navbar-header">
-            <button class="navbar-toggle md:hidden text-white focus:outline-none" type="button" data-toggle="collapse"
-              data-target="#custom-collapse">
+          <div class="flex items-center">
+            <button class="navbar-toggle md:hidden text-white focus:outline-none mr-4" type="button">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar block w-6 h-1 bg-white mb-1"></span>
               <span class="icon-bar block w-6 h-1 bg-white mb-1"></span>
@@ -350,14 +416,27 @@
             <a class="navbar-brand text-white text-xl font-bold" href="index.html">Rodrigo Blanco</a>
           </div>
 
-          <div class="hidden md:block" id="custom-collapse">
-            <ul class="flex space-x-8">
-              <li><a href="#home" class="text-white hover:text-teal-400 transition">Home</a></li>
-              <li><a href="#philosophy" class="text-white hover:text-teal-400 transition">Philosophy</a></li>
-              <li><a href="#services" class="text-white hover:text-teal-400 transition">Services</a></li>
-              <li><a href="#skills" class="text-white hover:text-teal-400 transition">Skills</a></li>
-              <li><a href="#contact" class="text-white hover:text-teal-400 transition">Contact</a></li>
-            </ul>
+          <div class="flex items-center">
+            <div class="hidden md:block" id="custom-collapse">
+              <ul class="flex space-x-8 nav-links">
+                <li><a href="#home" class="text-white hover:text-teal-400 transition" data-en="Home"
+                    data-es="Inicio">Home</a></li>
+                <li><a href="#philosophy" class="text-white hover:text-teal-400 transition" data-en="Philosophy"
+                    data-es="Filosofía">Philosophy</a></li>
+                <li><a href="#services" class="text-white hover:text-teal-400 transition" data-en="Services"
+                    data-es="Servicios">Services</a></li>
+                <li><a href="#skills" class="text-white hover:text-teal-400 transition" data-en="Skills"
+                    data-es="Habilidades">Skills</a></li>
+                <li><a href="#contact" class="text-white hover:text-teal-400 transition" data-en="Contact"
+                    data-es="Contacto">Contact</a></li>
+              </ul>
+            </div>
+            <div class="language-toggle">
+              <button id="languageToggle" class="toggle-btn">
+                <i class="fas fa-language"></i>
+                <span id="languageText">EN</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -368,12 +447,14 @@
   <!-- Philosophy section -->
   <section id="philosophy" class="pfblock pfblock-gray py-20">
     <div class="container mx-auto px-4">
-      <div class="row border">
+      <div class="row">
         <div class="col-sm-6 col-sm-offset-3 mx-auto text-center">
           <div class="pfblock-header animate__animated animate__fadeInUp">
-            <h2 class="pfblock-title">Philosophy</h2>
+            <h2 class="pfblock-title" data-en="Philosophy" data-es="Filosofía">Philosophy</h2>
             <div class="pfblock-line mx-auto"></div>
-            <div class="pfblock-subtitle italic">
+            <div class="pfblock-subtitle italic"
+              data-en="&quot;Don't get set into one form, adapt it and build your own, and let it grow, be like water. Empty your mind, be formless, shapeless — like water. Now you put water in a cup, it becomes the cup; You put water into a bottle it becomes the bottle; You put it in a teapot it becomes the teapot. Now water can flow or it can crash. Be water, my friend&quot;"
+              data-es="&quot;No te establezcas en una forma, adáptala y construye la tuya, y déjala crecer, sé como el agua. Vacía tu mente, sé sin forma, sin figura — como el agua. Si pones agua en una taza, se convierte en la taza; pones agua en una botella, se convierte en la botella; la pones en una tetera, se convierte en la tetera. El agua puede fluir o puede chocar. Sé agua, amigo mío&quot;">
               "Don't get set into one form, adapt it and build your own, and let it grow, be like water. Empty your
               mind, be formless, shapeless — like water. Now you put water in a cup, it becomes the cup; You put water
               into a bottle it becomes the bottle; You put it in a teapot it becomes the teapot. Now water can flow or
@@ -392,9 +473,11 @@
       <div class="row">
         <div class="col-sm-12 mx-auto">
           <div class="pfblock-header animate__animated animate__fadeInUp text-center">
-            <h2 class="pfblock-title">This is what I do</h2>
+            <h2 class="pfblock-title" data-en="This is what I do" data-es="Esto es lo que hago">This is what I do</h2>
             <div class="pfblock-line mx-auto"></div>
-            <div class="pfblock-subtitle text-justify max-w-3xl mx-auto">
+            <div class="pfblock-subtitle text-justify max-w-3xl mx-auto"
+              data-en="In the last 10 years I had the opportunity to work on different projects, with different colleagues, for different companies. Developing the ability to adapt to the role that was needed in the software development process to carry it out successfully. Learning, growing and contributing whit my soft and hard skills."
+              data-es="En los últimos 10 años tuve la oportunidad de trabajar en diferentes proyectos, con diferentes colegas, para diferentes empresas. Desarrollando la capacidad de adaptarme al rol que se necesitaba en el proceso de desarrollo de software para llevarlo a cabo con éxito. Aprendiendo, creciendo y contribuyendo con mis habilidades técnicas y blandas.">
               In the last 10 years I had the opportunity to work on different projects, with different colleagues, for
               different companies. Developing the ability to adapt to the role that was needed in the software
               development process to carry it out successfully. Learning, growing and contributing whit my soft and hard
@@ -405,49 +488,60 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-        <div class="iconbox animate__animated animate__slideInLeft">
-          <div class="iconbox-icon">
+        <div class="iconbox animate__animated animate__slideInLeft shadow-sm border border-slate-200 rounded-lg p-4">
+          <div class="iconbox-icon mt-2">
             <span><i class="fas fa-sitemap"></i></span>
           </div>
           <div class="iconbox-text">
-            <h3 class="iconbox-title">Analysis & Planning</h3>
-            <div class="iconbox-desc">
+            <h3 class="iconbox-title" data-en="Analysis & Planning" data-es="Análisis & Planificación">Analysis &
+              Planning</h3>
+            <div class="iconbox-desc"
+              data-en="Identify stakeholders, drivers, constraints and make an action plan, it is essential to succeed."
+              data-es="Identificar partes interesadas, impulsores, restricciones y hacer un plan de acción, es esencial para tener éxito.">
               Identify stakeholders, drivers, constraints and make an action plan, it is essential to succeed.
             </div>
           </div>
         </div>
 
-        <div class="iconbox animate__animated animate__slideInLeft">
+        <div class="iconbox animate__animated animate__slideInLeft shadow-sm border border-slate-200 rounded-lg p-4">
           <div class="iconbox-icon">
             <span><i class="fas fa-code"></i></span>
           </div>
           <div class="iconbox-text">
-            <h3 class="iconbox-title">Design and Programming</h3>
-            <div class="iconbox-desc">
+            <h3 class="iconbox-title" data-en="Design and Programming" data-es="Diseño y Programación">Design and
+              Programming</h3>
+            <div class="iconbox-desc"
+              data-en="Make wireframes, prototypes and ERD, and then start coding with best practices!"
+              data-es="Hacer wireframes, prototipos y diagramas ER, y luego comenzar a codificar con las mejores prácticas!">
               Make wireframes, prototypes and ERD, and then start coding with best practices!
             </div>
           </div>
         </div>
 
-        <div class="iconbox animate__animated animate__slideInRight">
+        <div class="iconbox animate__animated animate__slideInRight shadow-sm border border-slate-200 rounded-lg p-4">
           <div class="iconbox-icon">
             <span><i class="fas fa-filter"></i></span>
           </div>
           <div class="iconbox-text">
-            <h3 class="iconbox-title">Test & Quality</h3>
-            <div class="iconbox-desc">
+            <h3 class="iconbox-title" data-en="Test & Quality" data-es="Pruebas & Calidad">Test & Quality</h3>
+            <div class="iconbox-desc"
+              data-en="Do Unit Test, Integration Test and End to End, to make sure everything works fine."
+              data-es="Hacer pruebas unitarias, de integración y de extremo a extremo, para asegurarse de que todo funcione correctamente.">
               Do Unit Test, Integration Test and End to End, to make sure everything works fine.
             </div>
           </div>
         </div>
 
-        <div class="iconbox animate__animated animate__slideInRight">
+        <div class="iconbox animate__animated animate__slideInRight shadow-sm border border-slate-200 rounded-lg p-4">
           <div class="iconbox-icon">
             <span><i class="fas fa-cogs"></i></span>
           </div>
           <div class="iconbox-text">
-            <h3 class="iconbox-title">Implementation & maintain</h3>
-            <div class="iconbox-desc">
+            <h3 class="iconbox-title" data-en="Implementation & maintain" data-es="Implementación & Mantenimiento">
+              Implementation & maintain</h3>
+            <div class="iconbox-desc"
+              data-en="Deploy the project in production and then refactor or implement upgrades."
+              data-es="Implementar el proyecto en producción y luego refactorizar o implementar actualizaciones.">
               Deploy the project in production and then refactor or implement upgrades.
             </div>
           </div>
@@ -464,39 +558,79 @@
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3 mx-auto text-center">
             <div class="pfblock-header animate__animated animate__fadeInUp">
-              <h2 class="pfblock-title">My Skills</h2>
+              <h2 class="pfblock-title" data-en="My Skills" data-es="Mis Habilidades">My Skills</h2>
               <div class="pfblock-line mx-auto"></div>
-              <div class="pfblock-subtitle">
+              <div class="pfblock-subtitle" data-en="Service skills are the foundation for your success."
+                data-es="Las habilidades de servicio son la base para tu éxito.">
                 Service skills are the foundation for your success.
               </div>
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
-          <div class="text-center">
-            <div class="chart mx-auto" data-percent="80">
-              <span class="percent">80</span>
-            </div>
-            <h3 class="text-center font-semibold mt-4">Php</h3>
-          </div>
-          <div class="text-center">
-            <div class="chart mx-auto" data-percent="90">
-              <span class="percent">90</span>
-            </div>
-            <h3 class="text-center font-semibold mt-4">JS</h3>
-          </div>
-          <div class="text-center">
-            <div class="chart mx-auto" data-percent="85">
-              <span class="percent">85</span>
-            </div>
-            <h3 class="text-center font-semibold mt-4">SQL</h3>
-          </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-12">
+          <!-- PHP/Laravel - Most prominent in your experience -->
           <div class="text-center">
             <div class="chart mx-auto" data-percent="95">
               <span class="percent">95</span>
             </div>
-            <h3 class="text-center font-semibold mt-4">UI / UX</h3>
+            <h3 class="text-center font-semibold mt-4">PHP/Laravel</h3>
+          </div>
+
+          <!-- JavaScript - Core skill throughout your career -->
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="90">
+              <span class="percent">90</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">JavaScript</h3>
+          </div>
+
+          <!-- MySQL - Used in nearly all projects -->
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="90">
+              <span class="percent">90</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">MySQL</h3>
+          </div>
+
+          <!-- Vue.js - Frequently mentioned in recent roles -->
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="85">
+              <span class="percent">85</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">Vue.js</h3>
+          </div>
+
+          <!-- Git/CI-CD - Essential in all recent positions -->
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="85">
+              <span class="percent">85</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">Git/CI-CD</h3>
+          </div>
+
+          <!-- AWS - Used in multiple projects -->
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="80">
+              <span class="percent">80</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">AWS</h3>
+          </div>
+
+          <!-- Node.js - Used in several positions -->
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="80">
+              <span class="percent">80</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">Node.js</h3>
+          </div>
+
+          <!-- Symfony - Used in multiple projects -->
+          <div class="text-center">
+            <div class="chart mx-auto" data-percent="75">
+              <span class="percent">75</span>
+            </div>
+            <h3 class="text-center font-semibold mt-4">Symfony</h3>
           </div>
         </div>
       </div>
@@ -510,9 +644,12 @@
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 mx-auto text-center">
           <div class="pfblock-header">
-            <h2 class="pfblock-title">Contact me in a touch!</h2>
+            <h2 class="pfblock-title" data-en="Contact me in a touch!" data-es="¡Contáctame con un toque!">Contact me in
+              a touch!</h2>
             <div class="pfblock-line mx-auto"></div>
-            <div class="pfblock-subtitle">
+            <div class="pfblock-subtitle"
+              data-en="If you are interested in contact me for project or advice, please send me a message and I will respond as soon as possible. Thanks"
+              data-es="Si estás interesado en contactarme para un proyecto o consejo, por favor envíame un mensaje y responderé lo antes posible. Gracias">
               If you are interested in contact me for project or advice, please send me a message and I will respond as
               soon as possible. Thanks
             </div>
@@ -525,25 +662,26 @@
           <form id="contact-form" role="form" action="https://formspree.io/mnqgwryz" method="POST" class="mt-8">
             <div class="ajax-hidden">
               <div class="form-group animate__animated animate__fadeInUp">
-                <label class="sr-only" for="c_name">Name</label>
+                <label class="sr-only" for="c_name" data-en="Name" data-es="Nombre">Name</label>
                 <input type="text" id="c_name" class="form-control w-full px-4 py-3 border border-gray-300 rounded"
-                  name="c_name" placeholder="Name" required />
+                  name="c_name" placeholder="Name" data-en="Name" data-es="Nombre" required />
               </div>
 
               <div class="form-group animate__animated animate__fadeInUp mt-4" data-wow-delay=".1s">
-                <label class="sr-only" for="c_email">Email</label>
+                <label class="sr-only" for="c_email" data-en="Email" data-es="Correo electrónico">Email</label>
                 <input type="email" id="c_email" class="form-control w-full px-4 py-3 border border-gray-300 rounded"
-                  name="c_email" placeholder="E-mail" required />
+                  name="c_email" placeholder="E-mail" data-en="E-mail" data-es="Correo electrónico" required />
               </div>
 
               <div class="form-group animate__animated animate__fadeInUp mt-4" data-wow-delay=".2s">
                 <textarea class="form-control w-full px-4 py-3 border border-gray-300 rounded" id="c_message"
-                  name="c_message" rows="7" placeholder="Message" required></textarea>
+                  name="c_message" rows="7" placeholder="Message" data-en="Message" data-es="Mensaje"
+                  required></textarea>
               </div>
 
               <button type="submit"
                 class="btn btn-lg btn-block bg-teal-500 hover:bg-teal-600 text-white mt-6 w-full py-3 animate__animated animate__fadeInUp"
-                data-wow-delay=".3s">
+                data-wow-delay=".3s" data-en="Send Message" data-es="Enviar Mensaje">
                 Send Message
               </button>
             </div>
@@ -559,7 +697,8 @@
     <div class="container mx-auto px-4">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <p class="text-gray-600">&copy; 2023 Rodrigo Blanco. All rights reserved.</p>
+          <p class="text-gray-600">&copy; 2023 Rodrigo Blanco. <span data-en="All rights reserved."
+              data-es="Todos los derechos reservados.">All rights reserved.</span></p>
         </div>
       </div>
     </div>
@@ -585,6 +724,38 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
 
   <script>
+    // Language toggle functionality
+    let currentLanguage = 'en';
+
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+      updateLanguage();
+    }
+
+    function updateLanguage() {
+      // Update all elements with data attributes
+      $('[data-en], [data-es]').each(function () {
+        if ($(this).is('input, textarea')) {
+          // Handle input placeholders
+          const placeholder = currentLanguage === 'en' ? $(this).data('en') : $(this).data('es');
+          $(this).attr('placeholder', placeholder);
+        } else if ($(this).is('button')) {
+          // Handle button text
+          const text = currentLanguage === 'en' ? $(this).data('en') : $(this).data('es');
+          $(this).text(text);
+        } else {
+          // Handle all other elements
+          const text = currentLanguage === 'en' ? $(this).data('en') : $(this).data('es');
+          if (text) $(this).text(text);
+        }
+      });
+
+      // Update language toggle button text
+      $('#languageText').text(currentLanguage === 'en' ? 'ES' : 'EN');
+    }
+
+    $('#languageToggle').on('click', toggleLanguage);
+
     // Preloader
     $(window).on('load', function () {
       $('#status').fadeOut();
@@ -627,16 +798,6 @@
         size: 140,
         animate: 1500
       });
-    });
-
-    // Mobile menu toggle
-    $('.navbar-toggle').on('click', function () {
-      $('#custom-collapse').toggleClass('hidden');
-    });
-
-    // Close mobile menu when clicking a link
-    $('#custom-collapse a').on('click', function () {
-      $('#custom-collapse').addClass('hidden');
     });
 
     // Animation on scroll
